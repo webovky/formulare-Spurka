@@ -1,63 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-  background-color: #eeeeee;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-left: 90px;
-  margin-right: 90px; }
-
-h1, h2, h3 {
-  clear: both;
-  margin-top: 3em;
+    background-color: #f7f7f7;
 }
 
-h1 a {
-  color: #bb8800; 
+nav {
+    display: flex;
 }
+header {
+    background-color: cadetblue;
+}
+
+
 
 nav ul {
-  margin: 1ex auto;
-  margin-left: 150px;
-  /* text-align: center; */
-  font-weight: bold; }
-  nav ul li {
-    display: block;
-    width: 30%;
-    margin-top: 1ex;
-    }
-    nav ul li a {
-      display: block;
-      color: white;
-      background-color: #324b79;
-      border-radius: 25px 50px 0px;
-      padding: 1ex 2ex; }
-    nav ul li a:hover {
-      color: #324b72;
-      background-color: white;
-    }
-  nav img {
-    float:left;
-  }
+    background-color: blueviolet;
+    flex: 2;
+    padding: 0px;
+}
+nav p {
+    background-color: dodgerblue;
+    padding: 30px 0px 20px 40px;
+    flex: 5;
+}
+nav li {
+    list-style-type: none;
+}
 
-footer {
-  padding: 0.1ex 2em;
-  margin-top: 2em;
-  border-top: solid 2px #FACC15;
-  background-color: #ecc8f0; }
 
-.login {
-  display: inline-block;
-  float: right;
-  width: 30%;
-  border: orange solid 2px;
-  padding: 1ex; }
+.pokus {
+    width: 20em;
+    background-color: cornsilk;
+    border: 2px solid brown;
+    display: inline-block;
+    position: fixed;
+    top: 44px;
+    left: 80px; 
+}
   
-.odd {
-    background-color: orange;
+@media screen and (max-width: 790px) {
+    .global {
+        margin: 1em;
+    }
 }
-
-.even {
-    background-color: lightblue;
-}
-
-
-/*# sourceMappingURL=styles.css.map */

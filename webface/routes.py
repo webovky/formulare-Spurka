@@ -1,44 +1,55 @@
 from . import app
-from flask import render_template, request, redirect, url_for, session
-import functools
-
-# from werkzeug.security import check_password_hash
-
-slova = ("Super", "Perfekt", "Úža", "Flask")
+from flask import render_template, request
 
 
-def prihlasit(function):
-    @functools.wraps(function)
-    def wrapper(*args, **kwargs):
-        if "user" in session:
-            return function(*args, **kwargs)
-        else:
-            return redirect(url_for("login", url=request.path))
-
-    return wrapper
-
-
-@app.route("/", methods=["GET"])
+@app.route('/')
 def index():
-    return render_template("base.html.j2")
+    pi=3.141519
+    e=2.7
+    title = 'Index'
+    return render_template('base.html.j2', pi=pi, title=title)
 
 
-@app.route("/info/")
-def info():
-    return render_template("info.html.j2")
+@app.route('/ctverec/',methods=['GET','POST'])
+def ctverec():
+    title = 'ctverec'
+    x = request.args.get('x')
+    try:
+        z = int(x) * int(x)
+        n = int(x) * 4
+    except (TypeError, ValueError):
+        z = ''
+        n = ''
+    return render_template('ctverec.html.j2', title=title,z=z,n=n)
+
+@app.route('/kruh/')
+def kruh():
+    title = 'kruh'
+    x = request.args.get('x')
+    try:
+        z = (int(x)*int(x)) * 3.14
+        n = 2 * 3.14 * int(x)
+    except (TypeError, ValueError):
+        z = ''
+        n = ''
+    return render_template('kruh.html.j2', title=title,z=z,n=n)    
+
+@app.route('/obdelnik/')
+def obdelnik():
+    title = 'obdelnik'
+    x = request.args.get('x')
+    y = request.args.get('y')
+    try:
+        z = int(x)*int(y)
+        n = 2*(int(x)+int(y))
+    except (TypeError, ValueError):
+        z = ''
+        n = ''
+    return render_template('obdelnik.html.j2', title=title,z=z,n=n)
 
 
-@app.route("/abc/")
-def abc():
-    return render_template("abc.html.j2", slova=slova)
 
-
-@app.route("/text/")
-def text():
-    return """
-
-<h1>Text</h1>
-
-<p>toto je text</p>
-
-"""
+@app.route('/tajne/')
+def tajne():
+    title = 'Tajné'
+    return render_template('tajne.html.j2', title=title)

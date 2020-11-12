@@ -1,0 +1,14 @@
+{% extends "base.html.j2" %}
+
+{% block obsah %}
+
+<p>Kruh</p>
+<form method='get'>
+  <input type="text" placeholder="polomer:" name="x" value="{{request.args.get('x') or ''}}" /><br>
+  <input type="submit" name="tlac" value="Submit"/>
+</form>
+
+Obvod: {{n}} jednotek&#xB2<br>
+Obsah: {{z}} jednotek
+
+{% endblock obsah %}
