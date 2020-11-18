@@ -1,5 +1,7 @@
 from . import app
-from flask import render_template, request
+from flask import render_template, request, redirect, session, url_for
+
+app.secret_key = "hello"
 
 
 @app.route('/')
@@ -53,3 +55,25 @@ def obdelnik():
 def tajne():
     title = 'Tajné'
     return render_template('tajne.html.j2', title=title)
+
+
+
+@app.route('/login/',methods=['GET','POST'])
+def login():
+    title = 'login'
+    if request.method == 'POST':
+        uzivatel = request.form["nm"]
+        session["uzivatel"] = uzivatel
+        return redirect(url_for("uzivatel"))
+    else:
+        return render_template("login.html.j2")
+    
+    return render_template('login.html.j2', title=title,)
+
+@app.route('/uzivatel')
+def uzivatel():
+    if "uzivatel" in session:
+        uzivatel = session["uzivatel"]
+        return redirect(url_for('tajne'))
+    else:
+        return redirect(url_for("login"))
